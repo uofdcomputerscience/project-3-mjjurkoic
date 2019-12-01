@@ -46,6 +46,17 @@ extension BookListViewController: UITableViewDataSource {
 extension BookListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedBook = books[indexPath.item]
+        if #available(iOS 13.0, *) {
+            let detail = storyboard?.instantiateViewController(identifier: "BookDetailView") as! BookDetailViewController
+            detail.bookImage.image = bookImages[selectedBook.imageURLString]
+            detail.bookTitle.text = selectedBook.title
+            detail.bookAuthor.text = selectedBook.author
+            detail.bookPublication.text = selectedBook.published
+            navigationController?.pushViewController(detail, animated: true)
+        } else {
+            // TODO: Add fallback for earlier iOS versions
+        }
     }
     
 }

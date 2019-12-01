@@ -14,7 +14,6 @@
 		4670DA86238099DC00487601 /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4670DA85238099DC00487601 /* BookListViewController.swift */; };
 		4670DA88238099F800487601 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4670DA87238099F800487601 /* BookDetailViewController.swift */; };
 		4670DA8A23809A0600487601 /* BookInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4670DA8923809A0500487601 /* BookInputViewController.swift */; };
-		4670DA8C23809A1C00487601 /* ReviewListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4670DA8B23809A1C00487601 /* ReviewListViewController.swift */; };
 		4670DA8E23809A2800487601 /* ReviewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4670DA8D23809A2800487601 /* ReviewDetailViewController.swift */; };
 		4670DA9023809A3300487601 /* ReviewInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4670DA8F23809A3300487601 /* ReviewInputViewController.swift */; };
 		4670DA9223809A3A00487601 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4670DA9123809A3A00487601 /* Book.swift */; };
@@ -22,6 +21,7 @@
 		4670DA9623809A5000487601 /* BookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4670DA9523809A5000487601 /* BookService.swift */; };
 		4670DA9823809A5900487601 /* ReviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4670DA9723809A5900487601 /* ReviewService.swift */; };
 		5B6D56422393615000DF613F /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D56412393615000DF613F /* BookCell.swift */; };
+		5B6D56462393734E00DF613F /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6D56452393734E00DF613F /* ReviewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +34,6 @@
 		4670DA85238099DC00487601 /* BookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewController.swift; sourceTree = "<group>"; };
 		4670DA87238099F800487601 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		4670DA8923809A0500487601 /* BookInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInputViewController.swift; sourceTree = "<group>"; };
-		4670DA8B23809A1C00487601 /* ReviewListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListViewController.swift; sourceTree = "<group>"; };
 		4670DA8D23809A2800487601 /* ReviewDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDetailViewController.swift; sourceTree = "<group>"; };
 		4670DA8F23809A3300487601 /* ReviewInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewInputViewController.swift; sourceTree = "<group>"; };
 		4670DA9123809A3A00487601 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
@@ -42,6 +41,7 @@
 		4670DA9523809A5000487601 /* BookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookService.swift; sourceTree = "<group>"; };
 		4670DA9723809A5900487601 /* ReviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewService.swift; sourceTree = "<group>"; };
 		5B6D56412393615000DF613F /* BookCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
+		5B6D56452393734E00DF613F /* ReviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,12 +82,12 @@
 				4670DA85238099DC00487601 /* BookListViewController.swift */,
 				4670DA87238099F800487601 /* BookDetailViewController.swift */,
 				4670DA8923809A0500487601 /* BookInputViewController.swift */,
-				4670DA8B23809A1C00487601 /* ReviewListViewController.swift */,
 				4670DA8D23809A2800487601 /* ReviewDetailViewController.swift */,
 				4670DA8F23809A3300487601 /* ReviewInputViewController.swift */,
 				4670DA9123809A3A00487601 /* Book.swift */,
 				5B6D56412393615000DF613F /* BookCell.swift */,
 				4670DA9323809A4700487601 /* Review.swift */,
+				5B6D56452393734E00DF613F /* ReviewCell.swift */,
 				4670DA9523809A5000487601 /* BookService.swift */,
 				4670DA9723809A5900487601 /* ReviewService.swift */,
 			);
@@ -166,8 +166,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B6D56422393615000DF613F /* BookCell.swift in Sources */,
+				5B6D56462393734E00DF613F /* ReviewCell.swift in Sources */,
 				4670DA9823809A5900487601 /* ReviewService.swift in Sources */,
-				4670DA8C23809A1C00487601 /* ReviewListViewController.swift in Sources */,
 				4670DA86238099DC00487601 /* BookListViewController.swift in Sources */,
 				4670DA72238099BC00487601 /* AppDelegate.swift in Sources */,
 				4670DA8A23809A0600487601 /* BookInputViewController.swift in Sources */,
