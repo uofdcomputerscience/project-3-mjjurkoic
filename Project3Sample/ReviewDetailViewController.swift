@@ -10,8 +10,13 @@ import UIKit
 
 class ReviewDetailViewController: UIViewController {
     
+    @IBOutlet weak var reviewTitle: UILabel!
+    @IBOutlet weak var reviewAuthor: UILabel!
+    @IBOutlet weak var reviewDate: UILabel!
+    @IBOutlet weak var reviewBody: UITextView!
     
-    
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
 }

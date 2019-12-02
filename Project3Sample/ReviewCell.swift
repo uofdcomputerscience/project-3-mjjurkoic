@@ -13,14 +13,14 @@ class ReviewCell: UITableViewCell {
     @IBOutlet weak var reviewTitle: UILabel!
     @IBOutlet weak var reviewAuthor: UILabel!
     @IBOutlet weak var reviewDate: UILabel!
-    @IBOutlet weak var reviewText: UITextView!
+    
+    let formatter = DateFormatter()
     
     func configure(review: Review) {
         reviewTitle.text = review.title
         reviewAuthor.text = review.reviewer
-        // TODO: Add date formatter
-//        reviewDate.text = review.date.format()
-        reviewText.text = review.body
+        formatter.dateFormat = "EEEE, d MMM, yyyy"
+        reviewDate.text = formatter.string(from: review.date!)
     }
     
 }

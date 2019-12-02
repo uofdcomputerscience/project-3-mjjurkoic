@@ -13,14 +13,14 @@ class BookListViewController: UIViewController {
     @IBOutlet weak var bookTableView: UITableView!
     
     var books: [Book] = []
-    var bookImages = Dictionary<String, UIImage>()
     let bookService = BookService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bookService.fetchBooks{ [weak self] () in
+        bookService.fetchBooks{ () in
+            self.books = self.bookService.books
             DispatchQueue.main.async {
-                self?.bookTableView.reloadData()
+                self.bookTableView.reloadData()
             }
         }
         bookTableView.dataSource = self
@@ -37,7 +37,7 @@ extension BookListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = bookTableView.dequeueReusableCell(withIdentifier: "BookCell", for: indexPath) as! BookCell
-        cell.configure(item: books[indexPath.row], service: bookService, parentViewController: self)
+        cell.configure(item: books[indexPath.row], service: bookService)
         return cell
     }
     
@@ -49,10 +49,18 @@ extension BookListViewController: UITableViewDelegate {
         let selectedBook = books[indexPath.item]
         if #available(iOS 13.0, *) {
             let detail = storyboard?.instantiateViewController(identifier: "BookDetailView") as! BookDetailViewController
-            detail.bookImage.image = bookImages[selectedBook.imageURLString]
-            detail.bookTitle.text = selectedBook.title
-            detail.bookAuthor.text = selectedBook.author
-            detail.bookPublication.text = selectedBook.published
+            self.bookService.image(for: selectedBook) { (book, image) in
+                if selectedBook.imageURL == book.imageURL {
+                    DispatchQueue.main.async {
+                        detail.bookImage?.image = image
+                    }
+                }
+                DispatchQueue.main.async {
+                    detail.bookTitle?.text = selectedBook.title
+                    detail.bookAuthor?.text = selectedBook.author
+                    detail.bookPublication?.text = selectedBook.published
+                }
+            }
             navigationController?.pushViewController(detail, animated: true)
         } else {
             // TODO: Add fallback for earlier iOS versions

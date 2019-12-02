@@ -86,9 +86,9 @@
 				4670DA8F23809A3300487601 /* ReviewInputViewController.swift */,
 				4670DA9123809A3A00487601 /* Book.swift */,
 				5B6D56412393615000DF613F /* BookCell.swift */,
+				4670DA9523809A5000487601 /* BookService.swift */,
 				4670DA9323809A4700487601 /* Review.swift */,
 				5B6D56452393734E00DF613F /* ReviewCell.swift */,
-				4670DA9523809A5000487601 /* BookService.swift */,
 				4670DA9723809A5900487601 /* ReviewService.swift */,
 			);
 			path = Project3Sample;
