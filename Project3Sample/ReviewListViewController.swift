@@ -1,23 +1,17 @@
 //
-//  BookDetailViewController.swift
+//  ReviewListViewController.swift
 //  Project3Sample
 //
-//  Created by Russell Mirabelli on 11/16/19.
+//  Created by Michael Jurkoic on 12/3/19.
 //  Copyright © 2019 Russell Mirabelli. All rights reserved.
 //
 
 import UIKit
 
-class BookDetailViewController: UIViewController {
+class ReviewListViewController: UIViewController {
     
-    @IBOutlet weak var bookImage: UIImageView!
-    @IBOutlet weak var bookTitle: UILabel!
-    @IBOutlet weak var bookAuthor: UILabel!
-    @IBOutlet weak var bookPublication: UILabel!
     @IBOutlet weak var reviewTableView: UITableView!
-    @IBOutlet weak var reviewButton: UIButton!
-    
-    var bookID: Int?
+    @IBOutlet weak var refreshButton: UIButton!
     
     var reviews: [Review] = []
     let reviewService = ReviewService()
@@ -33,22 +27,9 @@ class BookDetailViewController: UIViewController {
     func fetchReviews() {
         reviewService.fetchReviews { () in
             self.reviews = self.reviewService.reviews
-            self.reviews = self.reviews.filter { (someReview) -> Bool in
-                someReview.bookId == self.bookID
-            }
             DispatchQueue.main.async {
                 self.reviewTableView.reloadData()
             }
-        }
-    }
-    
-    @IBAction func reviewButtonTapped(_ sender: Any) {
-        if #available(iOS 13.0, *) {
-            let reviewInputView = storyboard?.instantiateViewController(identifier: "ReviewInputView") as! ReviewInputViewController
-            reviewInputView.bookID = self.bookID
-            navigationController?.pushViewController(reviewInputView, animated: true)
-        } else {
-            // Fallback on earlier versions
         }
     }
     
@@ -58,7 +39,7 @@ class BookDetailViewController: UIViewController {
     
 }
 
-extension BookDetailViewController: UITableViewDataSource {
+extension ReviewListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return reviews.count
@@ -72,7 +53,7 @@ extension BookDetailViewController: UITableViewDataSource {
     
 }
 
-extension BookDetailViewController: UITableViewDelegate {
+extension ReviewListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedReview = reviews[indexPath.item]

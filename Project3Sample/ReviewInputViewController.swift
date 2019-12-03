@@ -31,7 +31,7 @@ class ReviewInputViewController: UIViewController {
     
     @IBAction func submitButtonPressed(_ sender: Any) {
         if canSubmit {
-            self.review = Review(id: nil, bookId: self.bookID!, date: nil, reviewer: self.nameField.text!, title: self.titleField.text!, body: self.bodyField.text)
+            self.review = Review(id: nil, bookId: self.bookID!, date: Date(), reviewer: self.nameField.text!, title: self.titleField.text!, body: self.bodyField.text)
             reviewService.createReview(review: self.review!) { () in
                 DispatchQueue.main.async {
                     self.navigationController?.popViewController(animated: true)
