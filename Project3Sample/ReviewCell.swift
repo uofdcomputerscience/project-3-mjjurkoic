@@ -20,7 +20,7 @@ class ReviewCell: UITableViewCell {
         reviewTitle.text = review.title
         reviewAuthor.text = review.reviewer
         formatter.dateFormat = "EEEE, d MMM, yyyy"
-        reviewDate.text = formatter.string(from: review.date!)
+        reviewDate.text = formatter.string(from: review.date ?? Date())
     }
     
 }

@@ -17,28 +17,43 @@ class BookDetailViewController: UIViewController {
     @IBOutlet weak var reviewTableView: UITableView!
     @IBOutlet weak var reviewButton: UIButton!
     
+    var bookID: Int?
+    
     var reviews: [Review] = []
     let reviewService = ReviewService()
     let formatter = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        reviewService.fetchReviews { [weak self] in
-            DispatchQueue.main.async {
-                self?.reviewTableView.reloadData()
-            }
-        }
+        fetchReviews()
         reviewTableView.dataSource = self
         reviewTableView.delegate = self
+    }
+    
+    func fetchReviews() {
+        reviewService.fetchReviews { () in
+            self.reviews = self.reviewService.reviews
+            self.reviews = self.reviews.filter { (someReview) -> Bool in
+                someReview.id == self.bookID
+            }
+            DispatchQueue.main.async {
+                self.reviewTableView.reloadData()
+            }
+        }
     }
     
     @IBAction func reviewButtonTapped(_ sender: Any) {
         if #available(iOS 13.0, *) {
             let reviewInputView = storyboard?.instantiateViewController(identifier: "ReviewInputView") as! ReviewInputViewController
+            reviewInputView.bookID = self.bookID
             navigationController?.pushViewController(reviewInputView, animated: true)
         } else {
             // Fallback on earlier versions
         }
+    }
+    
+    @IBAction func refreshButtonTapped(_ sender: Any) {
+        fetchReviews()
     }
     
 }
@@ -67,7 +82,7 @@ extension BookDetailViewController: UITableViewDelegate {
                 detail.reviewTitle?.text = selectedReview.title
                 detail.reviewAuthor?.text = selectedReview.reviewer
                 self.formatter.dateFormat = "EEEE, d MMM, yyyy"
-                detail.reviewDate?.text = self.formatter.string(from: selectedReview.date!)
+                detail.reviewDate?.text = self.formatter.string(from: selectedReview.date ?? Date())
                 detail.reviewBody?.text = selectedReview.body
             }
             navigationController?.pushViewController(detail, animated: true)
